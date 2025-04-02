@@ -12,7 +12,7 @@ export default function ResumeMatcher() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("https://csv-excel-automation-python.onrender.com/match", {
+      const response = await axios.post("https://resume-analyzer-job-matcher.onrender.com/match", {
         resume,
         job_description: jobDescription,
       });
