@@ -12,7 +12,7 @@ export default function ResumeMatcher() {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:5000/match", {
+      const response = await axios.post("https://csv-excel-automation-python.onrender.com/match", {
         resume,
         job_description: jobDescription,
       });
