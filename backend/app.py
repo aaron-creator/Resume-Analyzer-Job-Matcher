@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import spacy
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -8,6 +9,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 nlp = spacy.load("en_core_web_sm")
 
 app = Flask("__name__")
+CORS(app)
 
 # Common technical keywords (customizable)
 TECH_KEYWORDS = {
