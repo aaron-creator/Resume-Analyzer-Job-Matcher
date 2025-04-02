@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import spacy
 import re
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -10,6 +11,11 @@ nlp = spacy.load("en_core_web_sm")
 
 app = Flask("__name__")
 CORS(app)
+
+PORT = int(os.getenv("PORT", 5000))  # Default to 5000
+SECRET_KEY = os.getenv("SECRET_KEY", "d58d9d58c77074b6534623451321385167a219301c53f81dae17c1cd62120b73")
+
+app.config["SECRET_KEY"] = SECRET_KEY
 
 # Common technical keywords (customizable)
 TECH_KEYWORDS = {
@@ -71,4 +77,4 @@ def match_resume():
     return jsonify({"match_score": final_similarity})
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=PORT)  # Run the Flask app
