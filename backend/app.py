@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 nlp = spacy.load("en_core_web_sm")
 
 app = Flask("__name__")
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
 PORT = int(os.getenv("PORT", 5000))  # Default to 5000
 SECRET_KEY = os.getenv("SECRET_KEY", "d58d9d58c77074b6534623451321385167a219301c53f81dae17c1cd62120b73")
